@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         LocalizationService.delegate(),
       ],
-      supportedLocales: _getSupportedLocal(),
+      supportedLocales: supportedLocales,
       theme: ThemeData(
         primarySwatch: AppColors.colorPrimarySwatch,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -49,12 +49,5 @@ class _MyAppState extends State<MyApp> {
       ),
       debugShowCheckedModeBanner: false,
     );
-  }
-
-  List<Locale> _getSupportedLocal() {
-    return [
-      const Locale('en', ''),
-      const Locale('bn', ''),
-    ];
   }
 }
