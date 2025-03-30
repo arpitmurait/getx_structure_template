@@ -23,9 +23,6 @@ for data and observe the response. Till then it may display a loader to the user
 # To configure and run this project [check here](readme_configuration_guideline.md) 
 You will find at above link step by step instructions with screenshots.
 
-# initialize i10n file to get localization
-`flutter gen-l10n`
-
 # change package name command
 `dart run change_app_package_name:main com.new.package.name`
 
