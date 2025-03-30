@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:upgrader/upgrader.dart';
 
 import '/app/core/base/base_controller.dart';
 import '/app/core/model/page_state.dart';
