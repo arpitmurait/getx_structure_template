@@ -55,15 +55,17 @@ abstract class BaseView<Controller extends BaseController>
   }
 
   Widget pageScaffold(BuildContext context) {
-    return Scaffold(
-      //sets ios status bar color
-      backgroundColor: pageBackgroundColor(),
-      key: globalKey,
-      appBar: appBar(context),
-      floatingActionButton: floatingActionButton(),
-      body: pageContent(context),
-      bottomNavigationBar: bottomNavigationBar(),
-      drawer: drawer(),
+    return UpgradeAlert(
+      child: Scaffold(
+        //sets ios status bar color
+        backgroundColor: pageBackgroundColor(),
+        key: globalKey,
+        appBar: appBar(context),
+        floatingActionButton: floatingActionButton(),
+        body: pageContent(context),
+        bottomNavigationBar: bottomNavigationBar(),
+        drawer: drawer(),
+      ),
     );
   }
 
