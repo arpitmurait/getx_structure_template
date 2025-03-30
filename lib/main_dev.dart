@@ -9,7 +9,7 @@ import 'app/data/local/hive/hive_manager.dart';
 
 void main() async {
   EnvConfig devConfig = EnvConfig(
-    appName: "Flutter GetX Template Dev",
+    appName: "dev_demo",
     baseUrl: "https://api.github.com",
     shouldCollectCrashLog: true,
   );

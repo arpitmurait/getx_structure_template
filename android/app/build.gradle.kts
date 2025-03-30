@@ -14,34 +14,7 @@ fun loadPropertiesFile(fileName: String): Properties {
     return properties
 }
 
-val localProperties = loadPropertiesFile("local.properties")
 val keystoreProperties = loadPropertiesFile("key.properties")
-
-val flutterRoot: String = localProperties.getProperty("flutter.sdk")
-    ?: throw GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-
-val flutterVersionCode: String = localProperties.getProperty("flutter.versionCode") ?: "1"
-val flutterVersionName: String = localProperties.getProperty("flutter.versionName") ?: "1.0"
-
-fun getCurrentFlavor(): String {
-    val gradle = gradle
-    val tskReqStr = gradle.startParameter.taskRequests.toString()
-
-    println(tskReqStr)
-    val pattern: Pattern = when {
-        tskReqStr.contains("assemble") -> Pattern.compile("assemble(\\w+)(Release|Debug)")
-        tskReqStr.contains("bundle") -> Pattern.compile("bundle(\\w+)(Release|Debug)")
-        else -> Pattern.compile("generate(\\w+)(Release|Debug)")
-    }
-
-    val matcher: Matcher = pattern.matcher(tskReqStr)
-    return if (matcher.find()) {
-        matcher.group(1).lowercase()
-    } else {
-        println("NO MATCH FOUND")
-        ""
-    }
-}
 
 plugins {
     id("com.android.application")
@@ -53,7 +26,7 @@ plugins {
 android {
     namespace = "com.example.getx_structure_template"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -75,34 +48,33 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        debug {
-            signingConfig = signingConfigs.getByName("debug")
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String?
+            keyPassword = keystoreProperties["keyPassword"] as String?
+            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+            storePassword = keystoreProperties["storePassword"] as String?
         }
     }
 
-//    signingConfigs {
-//        create("release") {
-//            keyAlias = keystoreProperties["keyAlias"] as String?
-//            keyPassword = keystoreProperties["password"] as String?
-//            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-//            storePassword = keystoreProperties["password"] as String?
-//        }
-//    }
-
     buildTypes {
-        release {
+        getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
+        }
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
-    flavorDimensions = "default"
+    flavorDimensions += "default"
     productFlavors {
         create("dev") {
+            resValue("string", "app_name", "dev_demo")
             dimension = "default"
             applicationIdSuffix = ".dev"
         }
         create("prod") {
+            resValue("string", "app_name", "prod_demo")
             dimension = "default"
         }
     }
@@ -110,5 +82,4 @@ android {
 
 flutter {
     source = "../.."
-    target = "lib/main_${getCurrentFlavor()}.dart"
 }

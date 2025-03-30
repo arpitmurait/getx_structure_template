@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:getx_structure_template/l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:getx_structure_template/localization/localization.dart';
 
 import '/app/bindings/initial_binding.dart';
 import '/app/core/values/app_colors.dart';
@@ -25,7 +26,12 @@ class _MyAppState extends State<MyApp> {
       initialRoute: AppPages.INITIAL,
       initialBinding: InitialBinding(),
       getPages: AppPages.routes,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        LocalizationService.delegate(),
+      ],
       supportedLocales: _getSupportedLocal(),
       theme: ThemeData(
         primarySwatch: AppColors.colorPrimarySwatch,

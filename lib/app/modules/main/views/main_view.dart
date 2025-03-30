@@ -9,8 +9,8 @@ import '/app/modules/main/model/menu_code.dart';
 import '/app/modules/main/views/bottom_nav_bar.dart';
 import '/app/modules/settings/views/settings_view.dart';
 
-// ignore: must_be_immutable\
 class MainView extends BaseView<MainController> {
+  MainView({super.key});
   @override
   PreferredSizeWidget? appBar(BuildContext context) => null;
 

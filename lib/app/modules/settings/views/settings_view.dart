@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getx_structure_template/localization/app_strings.dart';
 import '/app/modules/settings/widgets/item_settings_widgets.dart';
 import '/app/core/base/base_view.dart';
 import '/app/core/widget/custom_app_bar.dart';
@@ -10,7 +11,7 @@ class SettingsView extends BaseView<SettingsController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return CustomAppBar(
-      appBarTitleText: appLocalization.bottomNavSettings,
+      appBarTitleText: AppStrings.bottomNavSettings,
       isBackButtonEnabled: false,
     );
   }
@@ -20,21 +21,21 @@ class SettingsView extends BaseView<SettingsController> {
     return Column(
       children: [
         ItemSettings(
-          title: appLocalization.settingsTheme,
+          title: AppStrings.settingsTheme,
           prefixImage: 'ic_theme.png',
           suffixImage: 'arrow_forward.svg',
           onTap: _onThemeItemClicked,
         ),
         _getHorizontalDivider(),
         ItemSettings(
-          title: appLocalization.settingsLanguage,
+          title: AppStrings.settingsLanguage,
           prefixImage: 'ic_language.svg',
           suffixImage: 'arrow_forward.svg',
           onTap: _onLanguageItemClicked,
         ),
         _getHorizontalDivider(),
         ItemSettings(
-          title: appLocalization.settingsFontSize,
+          title: AppStrings.settingsFontSize,
           prefixImage: 'ic_font_size.svg',
           suffixImage: 'arrow_forward.svg',
           onTap: _onFontSizeItemClicked,

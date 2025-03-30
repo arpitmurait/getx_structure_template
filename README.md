@@ -46,3 +46,6 @@ Prod: `flutter run --flavor prod lib/main_prod.dart`
 # How was this project developed?
 - Run [get cli](https://pub.dev/packages/get_cli) command to create project in the required directory: `get create project`
 - Create `main_view` by running this command: `get create page:main` and so on...
+
+# Release key command
+`keytool -genkey -v -keystore "D:\client keystore\demo.jks" -keyalg RSA -keysize 2098 -validity 10000 -alias demo`
