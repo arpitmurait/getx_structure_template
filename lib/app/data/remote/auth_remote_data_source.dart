@@ -14,7 +14,7 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
   @override
   Future<UserModel> login(Map<String, dynamic> body) {
     var endpoint = "${DioProvider.baseUrl}/login";
-    var dioCall = dioClient.post(endpoint, queryParameters: body);
+    var dioCall = dioClient.post(endpoint, data: body);
 
     try {
       return callApiWithErrorParser(dioCall)
@@ -27,7 +27,7 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
   @override
   Future<UserModel> register(Map<String, dynamic> body) {
     var endpoint = "${DioProvider.baseUrl}/register";
-    var dioCall = dioClient.post(endpoint, queryParameters: body);
+    var dioCall = dioClient.post(endpoint, data: body);
 
     try {
       return callApiWithErrorParser(dioCall)
