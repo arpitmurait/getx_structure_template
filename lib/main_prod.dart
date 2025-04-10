@@ -10,7 +10,7 @@ import 'app/data/local/hive/hive_manager.dart';
 void main() async {
   EnvConfig prodConfig = EnvConfig(
     appName: "prod_demo",
-    baseUrl: "https://api.github.com",
+    baseUrl: "https://demo-auth-backend.vercel.app",
     shouldCollectCrashLog: true,
   );
 

@@ -17,28 +17,32 @@ class RegisterView extends BaseView<RegisterController> {
     return Column(
       children: [
         TextField(
-          controller: controller.nameController,
-          decoration: InputDecoration(
-            hintText: "Name",
-          ),
+          controller: controller.firstNameController,
+          decoration: InputDecoration(hintText: "First Name"),
+        ),
+        TextField(
+          controller: controller.lastNameController,
+          decoration: InputDecoration(hintText: "Last Name"),
+        ),
+        TextField(
+          controller: controller.phoneNumberController,
+          decoration: InputDecoration(hintText: "Phone Number"),
         ),
         TextField(
           controller: controller.emailController,
-          decoration: InputDecoration(
-            hintText: "Email",
-          ),
+          decoration: InputDecoration(hintText: "Email"),
         ),
         TextField(
           controller: controller.passwordController,
-          decoration: InputDecoration(
-            hintText: "Password",
-          ),
+          decoration: InputDecoration(hintText: "Password"),
         ),
-        ElevatedButton(onPressed: () {
-          controller.register();
-        }, child: Text("Register")),
+        ElevatedButton(
+          onPressed: () {
+            controller.register();
+          },
+          child: Text("Register"),
+        ),
       ],
     );
   }
-
 }

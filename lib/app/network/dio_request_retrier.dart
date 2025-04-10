@@ -8,8 +8,7 @@ class DioRequestRetrier {
   final dioClient = DioProvider.tokenClient;
   final RequestOptions requestOptions;
 
-  final HiveManager _hiveManager =
-      getx.Get.find(tag: (HiveManager).toString());
+  final HiveManager _hiveManager = getx.Get.find(tag: (HiveManager).toString());
 
   DioRequestRetrier({required this.requestOptions});
 
@@ -28,12 +27,10 @@ class DioRequestRetrier {
   }
 
   Future<Map<String, String>> getCustomHeaders() async {
-    final String accessToken = _hiveManager.getString(HiveManager.keyToken);
+    final String accessToken = _hiveManager.getString(HiveManager.tokenKey);
     var customHeaders = {'content-type': 'application/json'};
     if (accessToken.trim().isNotEmpty) {
-      customHeaders.addAll({
-        'Authorization': "Bearer $accessToken",
-      });
+      customHeaders.addAll({'Authorization': "Bearer $accessToken"});
     }
 
     return customHeaders;
