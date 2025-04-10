@@ -6,6 +6,7 @@ abstract class AuthRepository {
   Future<UserModel> login(Map<String, dynamic> body);
   Future<UserModel> register(Map<String, dynamic> body);
   Future<UserModel> forgotPassword(Map<String, dynamic> body);
+  Future<UserModel> verifyOtp(Map<String, dynamic> body);
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -26,5 +27,10 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserModel> forgotPassword(Map<String, dynamic> body) {
     return _remoteSource.forgotPassword(body);
+  }
+
+  @override
+  Future<UserModel> verifyOtp(Map<String, dynamic> body) {
+    return _remoteSource.verifyOtp(body);
   }
 }

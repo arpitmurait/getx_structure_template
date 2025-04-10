@@ -6,18 +6,16 @@ import '/app/core/values/app_values.dart';
 import '/app/core/widget/custom_app_bar.dart';
 import '/app/core/widget/paging_view.dart';
 import '/app/modules/home/controllers/home_controller.dart';
-import '/app/modules/home/widget/item_github_project.dart';
+import '../widget/item_user.dart';
 
 class HomeView extends BaseView<HomeController> {
   HomeView({super.key}) {
-    controller.getGithubGetxProjectList();
+    controller.getUserList();
   }
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return CustomAppBar(
-      appBarTitleText: 'GetX Templates on GitHub',
-    );
+    return CustomAppBar(appBarTitleText: 'Home');
   }
 
   @override
@@ -34,16 +32,17 @@ class HomeView extends BaseView<HomeController> {
         child: Obx(
           () => ListView.separated(
             shrinkWrap: true,
-            itemCount: controller.projectList.length,
+            itemCount: controller.userList.length,
             primary: false,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              var model = controller.projectList[index];
+              var model = controller.userList[index];
 
-              return ItemGithubProject(dataModel: model);
+              return ItemUser(dataModel: model);
             },
-            separatorBuilder: (BuildContext context, int index) =>
-                const SizedBox(height: AppValues.smallMargin),
+            separatorBuilder:
+                (BuildContext context, int index) =>
+                    const SizedBox(height: AppValues.smallMargin),
           ),
         ),
       ),

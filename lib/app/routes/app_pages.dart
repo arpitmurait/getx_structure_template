@@ -12,8 +12,6 @@ import '/app/modules/main/bindings/main_binding.dart';
 import '/app/modules/main/views/main_view.dart';
 import '/app/modules/other/bindings/other_binding.dart';
 import '/app/modules/other/views/other_view.dart';
-import '/app/modules/project_details/bindings/project_details_binding.dart';
-import '/app/modules/project_details/views/project_details_view.dart';
 import '/app/modules/settings/bindings/settings_binding.dart';
 import '/app/modules/settings/views/settings_view.dart';
 
@@ -25,16 +23,8 @@ class AppPages {
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [
-    GetPage(
-      name: _Paths.MAIN,
-      page: () => MainView(),
-      binding: MainBinding(),
-    ),
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
+    GetPage(name: _Paths.MAIN, page: () => MainView(), binding: MainBinding()),
+    GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
     GetPage(
       name: _Paths.FAVORITE,
       page: () => FavoriteView(),
@@ -49,11 +39,6 @@ class AppPages {
       name: _Paths.OTHER,
       page: () => OtherView(),
       binding: OtherBinding(),
-    ),
-    GetPage(
-      name: _Paths.PROJECT_DETAILS,
-      page: () => ProjectDetailsView(),
-      binding: ProjectDetailsBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,

@@ -1,81 +1,64 @@
 import 'package:get/get.dart';
 
+import '../../../data/repository/users_repository.dart' show UsersRepository;
 import '/app/core/base/base_controller.dart';
 import '/app/core/base/paging_controller.dart';
-import '/app/core/model/github_search_query_param.dart';
-import '/app/data/model/github_project_search_response.dart';
-import '/app/data/repository/github_repository.dart';
-import '/app/modules/home/model/github_project_ui_data.dart';
+import '../../../data/model/users_response.dart';
 
 class HomeController extends BaseController {
-  final GithubRepository _repository =
-      Get.find(tag: (GithubRepository).toString());
+  final UsersRepository _repository = Get.find(
+    tag: (UsersRepository).toString(),
+  );
 
-  final RxList<GithubProjectUiData> _githubProjectListController =
-      RxList.empty();
+  final RxList<UserData> _userListController = RxList.empty();
 
-  List<GithubProjectUiData> get projectList =>
-      _githubProjectListController.toList();
+  List<UserData> get userList => _userListController.toList();
 
-  final pagingController = PagingController<GithubProjectUiData>();
+  final pagingController = PagingController<UserData>();
 
-  void getGithubGetxProjectList() {
+  void getUserList() {
     if (!pagingController.canLoadNextPage()) return;
 
     pagingController.isLoadingPage = true;
+    var body = {
+      "page": pagingController.pageNumber,
+      "limit": 10,
+      "search_query": "",
+    };
 
-    var queryParam = GithubSearchQueryParam(
-      searchKeyWord: 'flutter getx template',
-      pageNumber: pagingController.pageNumber,
-    );
+    var usersService = _repository.usersList(body);
 
-    var githubRepoSearchService = _repository.searchProject(queryParam);
-
-    callDataService(
-      githubRepoSearchService,
-      onSuccess: _handleProjectListResponseSuccess,
-    );
+    callDataService(usersService, onSuccess: _handleProjectListResponseSuccess);
 
     pagingController.isLoadingPage = false;
   }
 
   onRefreshPage() {
     pagingController.initRefresh();
-    getGithubGetxProjectList();
+    getUserList();
   }
 
   onLoadNextPage() {
     logger.i("On load next");
 
-    getGithubGetxProjectList();
+    getUserList();
   }
 
-  void _handleProjectListResponseSuccess(GithubProjectSearchResponse response) {
-    List<GithubProjectUiData>? repoList = response.items
-        ?.map((e) => GithubProjectUiData(
-              repositoryName: e.name != null ? e.name! : "Null",
-              ownerLoginName: e.owner != null ? e.owner!.login! : "Null",
-              ownerAvatar: e.owner != null ? e.owner!.avatarUrl! : "",
-              numberOfStar: e.stargazersCount ?? 0,
-              numberOfFork: e.forks ?? 0,
-              score: e.score ?? 0.0,
-              watchers: e.watchers ?? 0,
-              description: e.description ?? "",
-            ))
-        .toList();
+  void _handleProjectListResponseSuccess(UsersResponseModel response) {
+    var users = response.data;
 
-    if (_isLastPage(repoList!.length, response.totalCount!)) {
-      pagingController.appendLastPage(repoList);
+    if (_isLastPage(users!.length, response.totalCount!)) {
+      pagingController.appendLastPage(users);
     } else {
-      pagingController.appendPage(repoList);
+      pagingController.appendPage(users);
     }
 
     var newList = [...pagingController.listItems];
 
-    _githubProjectListController(newList);
+    _userListController(newList);
   }
 
   bool _isLastPage(int newListItemCount, int totalCount) {
-    return (projectList.length + newListItemCount) >= totalCount;
+    return (userList.length + newListItemCount) >= totalCount;
   }
 }

@@ -9,6 +9,7 @@ abstract class AuthRemoteDataSource {
   Future<UserModel> login(Map<String, dynamic> body);
   Future<UserModel> register(Map<String, dynamic> body);
   Future<UserModel> forgotPassword(Map<String, dynamic> body);
+  Future<UserModel> verifyOtp(Map<String, dynamic> body);
 }
 
 class AuthRemoteDataSourceImpl extends BaseRemoteSource
@@ -64,6 +65,16 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
   @override
   Future<UserModel> forgotPassword(Map<String, dynamic> body) {
     var endpoint = "${DioProvider.baseUrl}/forgot-password";
+    var dioCall = dioClient.post(endpoint, data: body);
+
+    return callApiWithErrorParser(
+      dioCall,
+    ).then((response) => UserModel.fromJson(response.data));
+  }
+
+  @override
+  Future<UserModel> verifyOtp(Map<String, dynamic> body) {
+    var endpoint = "${DioProvider.baseUrl}/verify-otp";
     var dioCall = dioClient.post(endpoint, data: body);
 
     return callApiWithErrorParser(

@@ -1,29 +1,34 @@
 import 'package:dio/dio.dart';
+import 'package:getx_structure_template/app/data/local/hive/hive_manager.dart';
 import 'package:getx_structure_template/flavors/environment.dart';
-
+import 'package:get/get.dart' as getx;
 import '/app/network/pretty_dio_logger.dart';
 import '/app/network/request_headers.dart';
 import '/flavors/build_config.dart';
 
 class DioProvider {
   static final String baseUrl = BuildConfig.instance.config.baseUrl;
+  static final HiveManager _hiveManager = getx.Get.find(
+    tag: (HiveManager).toString(),
+  );
 
   static Dio? _instance;
 
   static const int _maxLineWidth = 90;
   static final _prettyDioLogger = PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: BuildConfig.instance.environment == Environment.DEVELOPMENT,
-      responseHeader: false,
-      error: true,
-      compact: true,
-      maxWidth: _maxLineWidth);
+    requestHeader: true,
+    requestBody: true,
+    responseBody: BuildConfig.instance.environment == Environment.DEVELOPMENT,
+    responseHeader: false,
+    error: true,
+    compact: true,
+    maxWidth: _maxLineWidth,
+  );
 
   static final BaseOptions _options = BaseOptions(
     baseUrl: baseUrl,
     connectTimeout: const Duration(seconds: 60),
-    receiveTimeout: const Duration(seconds:   60),
+    receiveTimeout: const Duration(seconds: 60),
   );
 
   static Dio get httpDio {
@@ -61,6 +66,12 @@ class DioProvider {
     _instance!.interceptors.clear();
     _instance!.interceptors.add(RequestHeaderInterceptor());
     _instance!.interceptors.add(_prettyDioLogger);
+    final String accessToken = _hiveManager.getString(HiveManager.tokenKey);
+    var customHeaders = {'content-type': 'application/json'};
+    if (accessToken.trim().isNotEmpty) {
+      customHeaders.addAll({'Authorization': accessToken});
+    }
+    _instance?.options.headers = customHeaders;
   }
 
   static String _buildContentType(String version) {

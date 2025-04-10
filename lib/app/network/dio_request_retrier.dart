@@ -30,7 +30,7 @@ class DioRequestRetrier {
     final String accessToken = _hiveManager.getString(HiveManager.tokenKey);
     var customHeaders = {'content-type': 'application/json'};
     if (accessToken.trim().isNotEmpty) {
-      customHeaders.addAll({'Authorization': "Bearer $accessToken"});
+      customHeaders.addAll({'Authorization': accessToken});
     }
 
     return customHeaders;
