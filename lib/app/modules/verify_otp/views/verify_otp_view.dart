@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 import 'package:getx_structure_template/app/core/base/base.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 

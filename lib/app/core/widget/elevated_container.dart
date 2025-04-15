@@ -12,7 +12,7 @@ class ElevatedContainer extends StatelessWidget {
   const ElevatedContainer({
     super.key,
     required this.child,
-    this.bgColor = AppColors.pageBackground,
+    this.bgColor = AppColors.kPrimaryColor,
     this.padding,
     this.borderRadius = AppValues.smallRadius,
   });
@@ -25,13 +25,13 @@ class ElevatedContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
           boxShadow: [
             BoxShadow(
-              color: AppColors.elevatedContainerColorOpacity,
+              color: AppColors.kNeutral20Color,
               spreadRadius: 3,
               blurRadius: 8,
               offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
-          color: AppColors.pageBackground),
+          color: AppColors.kPrimaryColor),
       child: child,
     );
   }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:getx_structure_template/app/core/base/base_widget_mixin.dart';
 import 'package:getx_structure_template/app/core/widget/asset_image_view.dart';
 import 'package:get/get.dart';
-
-import '/app/core/values/app_colors.dart';
 import '/app/core/values/app_values.dart';
 import '/app/modules/main/controllers/bottom_nav_controller.dart';
 import '/app/modules/main/model/menu_code.dart';
@@ -20,7 +18,6 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
   final OnBottomNavItemSelected onItemSelected;
   final navController = BottomNavController();
   final Key bottomNavKey = GlobalKey();
-  final Color selectedItemColor = Colors.white;
   final Color unselectedItemColor = Colors.grey;
 
   @override
@@ -30,12 +27,11 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
     return Obx(
       () => BottomNavigationBar(
         key: bottomNavKey,
-        items: _navItemBuilder(navItems),
+        items: _navItemBuilder(context,navItems),
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.colorAccent,
-        selectedItemColor: selectedItemColor,
+        selectedItemColor: Theme.of(context).textTheme.bodySmall?.color,
         unselectedItemColor: unselectedItemColor,
         currentIndex: navController.selectedIndex,
         onTap: (index) {
@@ -46,10 +42,11 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
     );
   }
 
-  List<BottomNavigationBarItem> _navItemBuilder(List<BottomNavItem> navItems) {
+  List<BottomNavigationBarItem> _navItemBuilder(BuildContext context,List<BottomNavItem> navItems) {
     return navItems
         .map(
           (BottomNavItem navItem) => _getBottomNavigationBarItem(
+            context,
             navItem,
             navItems.indexOf(navItem) == navController.selectedIndex,
           ),
@@ -58,6 +55,7 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
   }
 
   BottomNavigationBarItem _getBottomNavigationBarItem(
+    BuildContext context,
     BottomNavItem navItem,
     bool isSelected,
   ) {
@@ -66,7 +64,7 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
         fileName: navItem.iconSvgName,
         height: AppValues.iconDefaultSize,
         width: AppValues.iconDefaultSize,
-        color: isSelected ? selectedItemColor : unselectedItemColor,
+        color: isSelected ? Theme.of(context).textTheme.bodySmall?.color : unselectedItemColor,
       ),
       label: navItem.navTitle,
       tooltip: navItem.navTitle,

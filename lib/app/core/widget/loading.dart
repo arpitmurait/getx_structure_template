@@ -13,7 +13,7 @@ class Loading extends StatelessWidget {
       child: ElevatedContainer(
         padding: EdgeInsets.all(AppValues.margin),
         child: CircularProgressIndicator(
-          color: AppColors.colorPrimary,
+          color: AppColors.kWhite,
         ),
       ),
     );

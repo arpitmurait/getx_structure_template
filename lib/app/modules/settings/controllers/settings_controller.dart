@@ -8,8 +8,7 @@ import '/app/core/base/base_controller.dart';
 class SettingsController extends BaseController {
   final HiveManager hiveManager = Get.find(tag: (HiveManager).toString());
   ThemeMode themeMode = ThemeMode.system;
-  String currentLocale = languageNames.first;
-  final RxList _userListController = RxList.empty();
+  String? currentLocale;
 
   updateChanges(){
     String mode = hiveManager.getString(HiveManager.themeModeKey);

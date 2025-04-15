@@ -59,7 +59,6 @@ abstract class BaseView<Controller extends BaseController>
     return UpgradeAlert(
       child: Scaffold(
         //sets ios status bar color
-        backgroundColor: pageBackgroundColor(),
         key: globalKey,
         appBar: appBar(context),
         floatingActionButton: floatingActionButton(),
@@ -93,12 +92,8 @@ abstract class BaseView<Controller extends BaseController>
     );
   }
 
-  Color pageBackgroundColor() {
-    return AppColors.pageBackground;
-  }
-
   Color statusBarColor() {
-    return AppColors.pageBackground;
+    return AppColors.kPrimaryColor;
   }
 
   Widget? floatingActionButton() {

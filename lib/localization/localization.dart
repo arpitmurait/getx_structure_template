@@ -22,6 +22,17 @@ String getLanguageCodeFromName(String name){
   return code;
 }
 
+String getLanguageNameFromCode(String name){
+  String code = 'English';
+   switch(name) {
+     case "en":
+       return 'English';
+     case "hi" :
+       return "Hindi";
+  }
+  return code;
+}
+
 class LocalizationService {
   /// A [LocalizationsDelegate] delegate that creates an instance of this class
   ///

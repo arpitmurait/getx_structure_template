@@ -14,7 +14,7 @@ class SettingsView extends BaseView<SettingsController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return CustomAppBar(
-      appBarTitleText: AppStrings.bottomNavSettings,
+      appBarTitleText: AppStrings.bottomNavSettings.toLocalized(),
       isBackButtonEnabled: false,
     );
   }
@@ -37,22 +37,14 @@ class SettingsView extends BaseView<SettingsController> {
         _getHorizontalDivider(),
         GetBuilder<SettingsController>(
           id: AppKeys.locale,
-          autoRemove: true,
           builder: (controller) {
             return ItemSettings(
-              title: controller.currentLocale,
+              title: getLanguageNameFromCode(controller.currentLocale ?? ''),
               prefixImage: 'ic_language.svg',
               suffixImage: 'arrow_forward.svg',
               onTap: () => _onLanguageItemClicked(context),
             );
           },),
-        _getHorizontalDivider(),
-        ItemSettings(
-          title: AppStrings.settingsFontSize.toLocalized(),
-          prefixImage: 'ic_font_size.svg',
-          suffixImage: 'arrow_forward.svg',
-          onTap: _onFontSizeItemClicked,
-        ),
         _getHorizontalDivider(),
       ],
     );
@@ -67,8 +59,9 @@ class SettingsView extends BaseView<SettingsController> {
       return AlertDialog(
         title: Text("Choose Theme"),
         content: Column(
+          mainAxisSize: MainAxisSize.min,
           children:  ThemeMode.values.map((e) => ListTile(
-            title: Text(e.name),
+            title: Text(e.name,style: Theme.of(context).textTheme.bodyLarge,),
             onTap: () {
               controller.themeMode = e;
               Get.changeThemeMode(e);
@@ -86,8 +79,9 @@ class SettingsView extends BaseView<SettingsController> {
       return AlertDialog(
         title: Text("Choose Language"),
         content: Column(
+          mainAxisSize: MainAxisSize.min,
           children:  languageNames.map((e) => ListTile(
-            title: Text(e),
+            title: Text(e,style: Theme.of(context).textTheme.bodyLarge),
             onTap: () {
               controller.currentLocale = getLanguageCodeFromName(e);
               Get.updateLocale(Locale(getLanguageCodeFromName(e)));

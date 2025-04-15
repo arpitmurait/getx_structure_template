@@ -12,7 +12,7 @@ class Ripple extends StatelessWidget {
     super.key,
     this.child,
     required this.onTap,
-    this.rippleColor = AppColors.defaultRippleColor,
+    this.rippleColor = AppColors.kPrimaryColor,
     this.rippleRadius = AppValues.smallRadius,
   });
 

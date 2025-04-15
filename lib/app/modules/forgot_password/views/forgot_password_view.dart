@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-
 import '../../../core/base/base_view.dart';
 import '../../../core/widget/custom_app_bar.dart';
 import '../controllers/forgot_password_controller.dart';

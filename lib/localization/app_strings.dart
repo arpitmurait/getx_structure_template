@@ -13,7 +13,4 @@ class AppStrings {
   static String bottomNavFavorite = 'bottomNavFavorite';
   static String bottomNavSettings = 'bottomNavSettings';
   static String titleOtherView = 'titleOtherView';
-  static String settingsTheme = 'settingsTheme';
-  static String settingsLanguage = 'settingsLanguage';
-  static String settingsFontSize = 'settingsFontSize';
 }

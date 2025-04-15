@@ -15,7 +15,7 @@ class HomeView extends BaseView<HomeController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return CustomAppBar(appBarTitleText: 'Home');
+    return CustomAppBar(appBarTitleText: 'Home',isBackButtonEnabled: false,);
   }
 
   @override

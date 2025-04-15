@@ -4,7 +4,6 @@ import 'package:getx_structure_template/app/data/model/users_response.dart';
 
 import '/app/core/base/base_widget_mixin.dart';
 import '/app/core/values/app_values.dart';
-import '/app/core/values/text_styles.dart';
 import '/app/core/widget/elevated_container.dart';
 
 class ItemUser extends StatelessWidget with BaseWidgetMixin {
@@ -39,14 +38,12 @@ class ItemUser extends StatelessWidget with BaseWidgetMixin {
         children: [
           Text(
             dataModel.firstName ?? 'N/A',
-            style: cardTitleStyle,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
           const SizedBox(height: AppValues.margin_4),
           Text(
             dataModel.lastName ?? 'N/A',
-            style: cardSubtitleStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
