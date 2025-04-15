@@ -26,6 +26,7 @@ class MainBinding extends Bindings {
     );
     Get.lazyPut<SettingsController>(
       () => SettingsController(),
+      fenix: true
     );
   }
 }

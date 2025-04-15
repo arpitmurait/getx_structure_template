@@ -9,6 +9,19 @@ List<Locale> supportedLocales = [
   Locale("hi"),
 ];
 
+List<String> languageNames = ["English", "Hindi"];
+
+String getLanguageCodeFromName(String name){
+  String code = 'en';
+   switch(name) {
+     case "English":
+       return 'en';
+     case "Hindi" :
+       return "hi";
+  }
+  return code;
+}
+
 class LocalizationService {
   /// A [LocalizationsDelegate] delegate that creates an instance of this class
   ///

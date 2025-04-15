@@ -8,18 +8,18 @@ extension MenuCodeExtensions on MenuCode {
     switch (this) {
       case MenuCode.HOME:
         return BottomNavItem(
-          navTitle: AppStrings.bottomNavHome,
+          navTitle: AppStrings.bottomNavHome.toLocalized(),
           iconSvgName: "ic_home.svg",
           menuCode: MenuCode.HOME,
         );
       case MenuCode.FAVORITE:
         return BottomNavItem(
-            navTitle: AppStrings.bottomNavFavorite,
+            navTitle: AppStrings.bottomNavFavorite.toLocalized(),
             iconSvgName: "ic_favorite.svg",
             menuCode: MenuCode.FAVORITE);
       case MenuCode.SETTINGS:
         return BottomNavItem(
-            navTitle: AppStrings.bottomNavSettings,
+            navTitle: AppStrings.bottomNavSettings.toLocalized(),
             iconSvgName: "ic_settings.svg",
             menuCode: MenuCode.SETTINGS);
     }

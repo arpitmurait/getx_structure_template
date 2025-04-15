@@ -2,6 +2,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 abstract class HiveManager {
   static const appName = "appName";
+  static const themeModeKey = "themeModeKey";
+  static const localeKey = "localeKey";
   static const tokenKey = "tokenKey";
   static String userIdKey = "userIdKey";
   static String emailKey = "emailKey";

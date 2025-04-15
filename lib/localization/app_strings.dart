@@ -9,11 +9,11 @@ extension Localized on String {
 }
 
 class AppStrings {
-  static String bottomNavHome = 'bottomNavHome'.toLocalized();
-  static String bottomNavFavorite = 'bottomNavFavorite'.toLocalized();
-  static String bottomNavSettings = 'bottomNavSettings'.toLocalized();
-  static String titleOtherView = 'titleOtherView'.toLocalized();
-  static String settingsTheme = 'settingsTheme'.toLocalized();
-  static String settingsLanguage = 'settingsLanguage'.toLocalized();
-  static String settingsFontSize = 'settingsFontSize'.toLocalized();
+  static String bottomNavHome = 'bottomNavHome';
+  static String bottomNavFavorite = 'bottomNavFavorite';
+  static String bottomNavSettings = 'bottomNavSettings';
+  static String titleOtherView = 'titleOtherView';
+  static String settingsTheme = 'settingsTheme';
+  static String settingsLanguage = 'settingsLanguage';
+  static String settingsFontSize = 'settingsFontSize';
 }

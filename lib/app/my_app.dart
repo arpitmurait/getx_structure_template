@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
         LocalizationService.delegate(),
       ],
       supportedLocales: supportedLocales,
+      locale: Get.locale,
       theme: ThemeData(
         primarySwatch: AppColors.colorPrimarySwatch,
         visualDensity: VisualDensity.adaptivePlatformDensity,
