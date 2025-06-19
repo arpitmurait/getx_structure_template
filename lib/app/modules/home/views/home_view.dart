@@ -6,7 +6,7 @@ import '/app/core/values/app_values.dart';
 import '/app/core/widget/custom_app_bar.dart';
 import '/app/core/widget/paging_view.dart';
 import '/app/modules/home/controllers/home_controller.dart';
-import '../widget/item_user.dart';
+import 'widget/widget.dart';
 
 class HomeView extends BaseView<HomeController> {
   HomeView({super.key}) {

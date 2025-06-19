@@ -39,7 +39,7 @@ class VerifyOtpView extends BaseView<VerifyOtpController> {
               fieldHeight: 45,
               fieldWidth: 45,
               inactiveColor: Colors.black12,
-              activeColor: Color(0xffb54c4c).withOpacity(0.5),
+              activeColor: Color(0xffb54c4c).withValues(alpha: 0.5),
               selectedColor: Colors.black,
             ),
             onChanged: (value) {},

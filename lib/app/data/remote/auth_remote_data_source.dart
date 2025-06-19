@@ -14,7 +14,8 @@ abstract class AuthRemoteDataSource {
 
 class AuthRemoteDataSourceImpl extends BaseRemoteSource
     implements AuthRemoteDataSource {
-  final HiveManager hiveManager = Get.find(tag: (HiveManager).toString());
+  final HiveManager hiveManager;
+  AuthRemoteDataSourceImpl({required this.hiveManager});
   @override
   Future<UserModel> login(Map<String, dynamic> body) {
     var endpoint = "${DioProvider.baseUrl}/login";

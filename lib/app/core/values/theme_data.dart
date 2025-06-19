@@ -7,7 +7,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     // useMaterial3: false,
     //----------Typography----------//
-    fontFamily: 'Inter',
+    fontFamily: 'Roboto',
     //----------Scaffold Background----------//
     scaffoldBackgroundColor: AppColors.kWhite,
     //----------Icon Theme----------//
@@ -113,7 +113,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     primaryColor: AppColors.kPrimaryColor,
     //----------Typography----------//
-    fontFamily: 'Inter',
+    fontFamily: 'Roboto',
     //----------Scaffold Background----------//
     scaffoldBackgroundColor: AppColors.kNeutral100Color,
     //----------Icon Theme----------//
@@ -195,7 +195,7 @@ class AppTheme {
 
     //--------Checkbox theme---------//
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(AppColors.kPrimaryColor),
+      fillColor: WidgetStateProperty.all(AppColors.kPrimaryColor),
     ),
 
     textTheme: TextTheme(

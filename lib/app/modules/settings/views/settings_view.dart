@@ -95,8 +95,4 @@ class SettingsView extends BaseView<SettingsController> {
     },);
   }
 
-  void _onFontSizeItemClicked() {
-    showToast('Font Size: Development in progress');
-  }
-
 }

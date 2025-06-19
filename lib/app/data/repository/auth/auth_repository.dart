@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:getx_structure_template/app/data/remote/auth_remote_data_source.dart';
 import 'package:getx_structure_template/app/data/model/user_model.dart';
 
@@ -10,9 +9,8 @@ abstract class AuthRepository {
 }
 
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteDataSource _remoteSource = Get.find(
-    tag: (AuthRemoteDataSource).toString(),
-  );
+  final AuthRemoteDataSource _remoteSource;
+  AuthRepositoryImpl(this._remoteSource);
 
   @override
   Future<UserModel> login(Map<String, dynamic> body) {

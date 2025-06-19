@@ -25,7 +25,7 @@ abstract class AppColors {
   static const Color kDanger3 = Color(0xFFFFBEBA);
   static const Color kDanger4 = Color(0xFFD53128);
   static const Color kDanger5 = Color(0xFF801D18);
-  static final Color kDanger6 = const Color(0xFFFF3B30).withOpacity(0.2);
+  static final Color kDanger6 = const Color(0xFFFF3B30).withValues(alpha: 0.2);
 
   //-----------Warning Color-----------//
   static const Color kWarning1 = Color(0xFFFE6E28);
@@ -33,7 +33,7 @@ abstract class AppColors {
   static const Color kWarning3 = Color(0xFFFFCAB9);
   static const Color kWarning4 = Color(0xFFCAA73F);
   static const Color kWarning5 = Color(0xFF796426);
-  static final Color kWarning6 = const Color(0xFFFE6E28).withOpacity(0.20);
+  static final Color kWarning6 = const Color(0xFFFE6E28).withValues(alpha: 0.20);
 
   //Other Colors
   static const Color kWhite = kNeutral10Color;
@@ -95,7 +95,7 @@ class AppButtonStyle {
         TextStyle(fontSize: 16.sp)),
     minimumSize: WidgetStatePropertyAll(Size(366.w, 50.h)),
     backgroundColor:
-    WidgetStatePropertyAll(AppColors.kDanger1.withOpacity(0.1)),
+    WidgetStatePropertyAll(AppColors.kDanger1.withValues(alpha: 0.1)),
     foregroundColor: WidgetStatePropertyAll<Color>(AppColors.kDanger1),
     shape: WidgetStatePropertyAll(RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(30),
