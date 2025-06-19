@@ -6,5 +6,7 @@ export 'values/theme_data.dart';
 export 'utils/debouncer.dart';
 export 'widget/widget.dart';
 export 'base/base.dart';
+export 'dialogs/dialogs.dart';
+export 'sheets/sheets.dart';
 export 'model/page_state.dart';
 export 'model/page_status.dart';
