@@ -23,7 +23,7 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
 
     try {
       return callApiWithErrorParser(dioCall).then((response) {
-        var data = response.data['data'];
+        var data = response['data'];
         var user = UserModel.fromJson(data['user']);
         hiveManager.setString(HiveManager.tokenKey, data['token']);
         hiveManager.setString(HiveManager.userIdKey, user.id);
@@ -45,7 +45,7 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
 
     try {
       return callApiWithErrorParser(dioCall).then((response) {
-        var data = response.data['data'];
+        var data = response['data'];
         var user = UserModel.fromJson(data['user']);
         final HiveManagerImpl hiveManager = Get.find(
           tag: (HiveManager).toString(),
@@ -70,7 +70,7 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
 
     return callApiWithErrorParser(
       dioCall,
-    ).then((response) => UserModel.fromJson(response.data));
+    ).then((response) => UserModel.fromJson(response));
   }
 
   @override
@@ -80,6 +80,6 @@ class AuthRemoteDataSourceImpl extends BaseRemoteSource
 
     return callApiWithErrorParser(
       dioCall,
-    ).then((response) => UserModel.fromJson(response.data));
+    ).then((response) => UserModel.fromJson(response));
   }
 }

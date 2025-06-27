@@ -15,6 +15,6 @@ class UsersRemoteDataSourceImpl extends BaseRemoteSource
 
     return callApiWithErrorParser(
       dioCall,
-    ).then((response) => UsersResponseModel.fromJson(response.data));
+    ).then((response) => UsersResponseModel.fromJson(response));
   }
 }
