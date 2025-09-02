@@ -8,7 +8,6 @@ abstract class AuthRepository {
   Future<UserModel> register(Map<String, dynamic> body);
   Future<bool> forgotPassword(Map<String, dynamic> body);
   Future<bool> changePassword(Map<String, dynamic> body);
-  Future<Map<String, dynamic>> checkValidated(Map<String, dynamic> body);
   Future<bool> sendOtp(Map<String, dynamic> body);
   Future<bool> verifyOtp(Map<String, dynamic> body);
 }
@@ -129,18 +128,4 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  @override
-  Future<Map<String, dynamic>> checkValidated(Map<String, dynamic> body) async {
-    try {
-      final response = await apiService.post<Map<String, dynamic>>(
-        endpoint: AppUrls.checkValidated,
-        data: body,
-        fromJson: (json) => json, // Return the full response map
-      );
-      return response;
-    } catch (e) {
-      // Return an empty map or a map with an error flag on failure.
-      return {'error': e.toString()};
-    }
-  }
 }
