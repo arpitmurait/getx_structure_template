@@ -5,7 +5,7 @@ export 'values/app_images.dart';
 export 'values/theme_data.dart';
 export 'utils/utils.dart';
 export 'utils/extension.dart';
-export 'widget/widget.dart';
+export 'widgets/widget.dart';
 export 'dialogs/dialogs.dart';
 export '/localization/app_strings.dart';
 export 'constant/constant.dart';

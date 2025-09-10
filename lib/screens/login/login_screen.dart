@@ -60,18 +60,13 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            ElevatedButton(
+            CustomButton(
+              text: AppStrings.logIn.tr,
               onPressed: () {
                 if (formKey.currentState?.validate() ?? true) {
                   controller.login();
                 }
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.pinkButton,
-                fixedSize: Size(double.infinity, 50.h),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.r)),
-              ),
-              child: Text(AppStrings.logIn.tr, style: TextStyle(color: Colors.white)),
             ),
             SizedBox(height: 20.h),
           ],

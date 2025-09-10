@@ -16,9 +16,9 @@ class RegisterFormWidget extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
-            hint: AppStrings.fullName.tr,
-            trailingSvg: AppImages.icLoginUser,
-            controller: controller.nameController,
+            controller: controller.emailController,
+            hintText: AppStrings.fullName.tr,
+            prefixIcon: const Icon(Icons.person),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Full name is required';
@@ -28,31 +28,31 @@ class RegisterFormWidget extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           CustomTextField(
-            hint: AppStrings.email.tr,
-            keyboardType: TextInputType.emailAddress,
-            trailingSvg: AppImages.icLogiMail,
             controller: controller.emailController,
+            hintText: AppStrings.email.tr,
+            keyboardType: TextInputType.emailAddress,
+            prefixIcon: const Icon(Icons.email),
             validator: (value) {
-              final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
               if (value == null || value.isEmpty) {
-                return 'Email is required';
-              } else if (!emailRegex.hasMatch(value)) {
-                return 'Enter a valid email address';
+                return "Email is required";
+              }
+              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                return "Enter a valid email";
               }
               return null;
             },
           ),
           SizedBox(height: 12.h),
           CustomTextField(
-            hint: AppStrings.password.tr,
             controller: controller.passwordController,
-            obscure: true,
+            hintText: AppStrings.password.tr,
+            isPassword: true,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Password is required';
-              } else if (value.length < 6) {
-                return 'Password must be at least 6 characters';
+                return "Password is required";
+              }
+              if (value.length < 6) {
+                return "Password must be at least 6 characters";
               }
               return null;
             },
